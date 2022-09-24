@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RegularText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans_regular</item>
+    </style>
+
+    <style name="SecondaryText" parent="RegularText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="RegularText2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TitleText2" parent="RegularText2">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:indeterminateTint">@color/primary_500</item>
+    </style>
+
+    <style name="Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_width">89dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>
