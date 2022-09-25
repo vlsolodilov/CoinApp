@@ -1,5 +1,6 @@
 package com.solodilov.coinapp.presentation.coinlist
 
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -38,14 +39,16 @@ class CoinViewHolder(
             coinName.text = coin.name
             coinSymbol.text = coin.symbol.uppercase()
 
-            currentPrice.text = itemView.context.getString(
-                R.string.price_format,
+            currentPrice.text = String.format(
+                Locale.ENGLISH,
+                itemView.context.getString(R.string.price_format),
                 coin.currency.icon,
                 coin.currentPrice,
-            ).format(Locale.ENGLISH)
+            )
 
-            priceChangePercentage.text = itemView.context.getString(
-                R.string.price_change_format,
+            priceChangePercentage.text = String.format(
+                Locale.ENGLISH,
+                itemView.context.getString(R.string.price_change_format),
                 coin.priceChangePercentage,
             )
             val color = if (coin.priceChangePercentage >= 0) {
