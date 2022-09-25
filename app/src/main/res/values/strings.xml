@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">CoinApp</string>
-    <string name="usd">USD</string>
-    <string name="eur">EUR</string>
     <string name="error_message">Случилась какая-то ошибка :(\nПопробуем снова?</string>
     <string name="try_again">Попробовать</string>
     <string name="coin_list">Список криптовалют</string>
     <string name="description">Описание</string>
     <string name="category">Категории</string>
     <string name="coin_logo">Coin logo</string>
+    <string name="price_format">%s %,.2f</string>
+    <string name="price_change_format">%+.2f%%</string>
 </resources>

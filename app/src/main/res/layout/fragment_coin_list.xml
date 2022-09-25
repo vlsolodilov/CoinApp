@@ -22,28 +22,30 @@
             app:titleTextAppearance="@style/TitleText" />
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/group_chips_currency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_usd"
-                style="@style/Chip"
-                android:checked="true"
-                android:text="@string/usd" />
+                style="@style/Chip" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_eur"
-                style="@style/Chip"
-                android:text="@string/eur" />
+                style="@style/Chip" />
 
         </com.google.android.material.chip.ChipGroup>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coin_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

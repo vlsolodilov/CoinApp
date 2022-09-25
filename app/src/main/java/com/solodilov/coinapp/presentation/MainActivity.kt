@@ -1,7 +1,8 @@
-package com.solodilov.coinapp
+package com.solodilov.coinapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.solodilov.coinapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
