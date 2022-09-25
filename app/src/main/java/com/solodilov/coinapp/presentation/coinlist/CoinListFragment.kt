@@ -6,12 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.solodilov.coinapp.App
+import com.solodilov.coinapp.R
 import com.solodilov.coinapp.databinding.FragmentCoinListBinding
 import com.solodilov.coinapp.domain.entity.Currency
 import javax.inject.Inject
@@ -69,6 +72,11 @@ class CoinListFragment : Fragment() {
                 viewModel.loadCoinList()
             }
         }
+
+        binding.swipeContainer.setOnRefreshListener {
+            viewModel.loadCoinList()
+            binding.swipeContainer.isRefreshing = false
+        }
     }
 
     private fun observeViewModel() {
@@ -98,7 +106,6 @@ class CoinListFragment : Fragment() {
         toggleState(
             isLoading = true,
             isContent = false,
-            isError = false,
         )
     }
 
@@ -107,7 +114,6 @@ class CoinListFragment : Fragment() {
         toggleState(
             isLoading = false,
             isContent = true,
-            isError = false,
         )
     }
 
@@ -115,14 +121,27 @@ class CoinListFragment : Fragment() {
         toggleState(
             isLoading = false,
             isContent = false,
-            isError = true,
         )
+        coinAdapter?.let { coinAdapter ->
+            if (coinAdapter.currentList.isNotEmpty()) {
+                binding.coinList.isVisible = true
+                showErrorSnackBar()
+            } else {
+                binding.errorLayout.root.isVisible = true
+            }
+        }
     }
 
-    private fun toggleState(isLoading: Boolean, isContent: Boolean, isError: Boolean) {
+    private fun showErrorSnackBar() {
+        Snackbar.make(binding.root, R.string.error_occurred, Snackbar.LENGTH_SHORT)
+            .setBackgroundTint(ContextCompat.getColor(requireActivity(), R.color.red))
+            .show()
+    }
+
+    private fun toggleState(isLoading: Boolean, isContent: Boolean) {
         binding.progressBar.isVisible = isLoading
         binding.coinList.isVisible = isContent
-        binding.errorLayout.root.isVisible = isError
+        binding.errorLayout.root.isVisible = false
     }
 
     private fun startCoinDetailFragment(coinId: String, coinName: String) {

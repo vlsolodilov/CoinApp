@@ -8,4 +8,5 @@
     <string name="coin_logo">Coin logo</string>
     <string name="price_format">%s %,.2f</string>
     <string name="price_change_format">%+.2f%%</string>
+    <string name="error_occurred">Произошла ошибка при загрузке</string>
 </resources>
