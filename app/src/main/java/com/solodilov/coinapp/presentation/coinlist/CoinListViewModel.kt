@@ -25,6 +25,10 @@ class CoinListViewModel @Inject constructor(
         handleError(throwable)
     }
 
+    init {
+        loadCoinList()
+    }
+
     fun loadCoinList() {
         _currency.value?.let { currentCurrency ->
             _state.value = CoinListScreenState.Loading
@@ -36,12 +40,8 @@ class CoinListViewModel @Inject constructor(
         }
     }
 
-    fun setCurrency(currency: String) {
-        _currency.value = when (currency) {
-            Currency.USD.name -> Currency.USD
-            Currency.EUR.name -> Currency.EUR
-            else -> null
-        }
+    fun setCurrency(currency: Currency) {
+        _currency.value = currency
     }
 
     private fun handleError(error: Throwable) {

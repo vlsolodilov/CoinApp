@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -61,17 +62,7 @@ class CoinListFragment : Fragment() {
 
         binding.errorLayout.tryButton.setOnClickListener { viewModel.loadCoinList() }
 
-        binding.chipUsd.text = Currency.USD.name
-        binding.chipEur.text = Currency.EUR.name
-
-        binding.groupChipsCurrency.setOnCheckedStateChangeListener { group, checkedIds ->
-            checkedIds.firstOrNull()?.let { id ->
-                Log.d("TAG", "initViews: $id")
-                val currency = group.findViewById<Chip>(id).text
-                viewModel.setCurrency(currency.toString())
-                viewModel.loadCoinList()
-            }
-        }
+        Currency.values().iterator().forEach { addChip(it) }
 
         binding.swipeContainer.setOnRefreshListener {
             viewModel.loadCoinList()
@@ -87,9 +78,9 @@ class CoinListFragment : Fragment() {
     }
 
     private fun checkChipCurrency(currency: Currency) {
-        when (currency) {
-            Currency.USD -> binding.chipUsd.isChecked = true
-            Currency.EUR -> binding.chipEur.isChecked = true
+        binding.groupChipsCurrency.children.iterator().forEach {
+            val chip = it as Chip
+            chip.isChecked = chip.text == currency.name
         }
     }
 
@@ -129,6 +120,22 @@ class CoinListFragment : Fragment() {
             } else {
                 binding.errorLayout.root.isVisible = true
             }
+        }
+    }
+
+    private fun addChip(currency: Currency) {
+        val chip = layoutInflater.inflate(
+            R.layout.single_chip_layout,
+            binding.groupChipsCurrency,
+            false
+        ) as Chip
+        chip.apply {
+            text = currency.name
+            setOnClickListener {
+                viewModel.setCurrency(currency)
+                viewModel.loadCoinList()
+            }
+            binding.groupChipsCurrency.addView(chip)
         }
     }
 

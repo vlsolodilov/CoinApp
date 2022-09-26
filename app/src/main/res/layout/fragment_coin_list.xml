@@ -29,14 +29,6 @@
             app:selectionRequired="true"
             app:singleSelection="true">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_usd"
-                style="@style/Chip" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_eur"
-                style="@style/Chip" />
-
         </com.google.android.material.chip.ChipGroup>
 
     </com.google.android.material.appbar.AppBarLayout>
