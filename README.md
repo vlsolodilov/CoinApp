@@ -24,5 +24,7 @@
  - навигация (0,5 часа)
 3. отладка (4 часа)
 
-![CoinList](/screenshot/Screenshot_coin_list.png) ![CoinDetail](/screenshot/Screenshot_coin_detail.png)
-![CoinListError](/screenshot/Screenshot_coin_list_error.png) ![CoinDetailError](/screenshot/Screenshot_coin_detail_error.png)
+### Скриншоты:  
+| ![CoinList](/screenshot/Screenshot_coin_list.png)| ![CoinDetail](/screenshot/Screenshot_coin_detail.png) |
+| --------------------------------------- | --------------------------------------- |
+| ![CoinListError](/screenshot/Screenshot_coin_list_error.png) | ![CoinDetailError](/screenshot/Screenshot_coin_detail_error.png)|
